@@ -4,8 +4,8 @@
   "description": "An RP resource manager for the Chaos RPC Discord server",
   "main": "index.js",
   "scripts": {
-    "start": "node src/start.js",
-    "dev": "nodemon src/start.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
