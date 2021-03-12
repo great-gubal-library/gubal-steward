@@ -5,18 +5,22 @@ const { prefix, token } = require("./config.json");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 
-const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+// Reading commands dynamically from separate files
+const commandFolders = fs.readdirSync('./commands');
 
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-
-	bot.commands.set(command.name, command);
+for (const folder of commandFolders) {
+	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const command = require(`./commands/${folder}/${file}`);
+		bot.commands.set(command.name, command);
+	}
 }
 
 bot.once("ready", () => {
 	console.log("Ready!");
 });
 
+// Command parsing
 bot.on("message", message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
