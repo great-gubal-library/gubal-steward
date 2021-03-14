@@ -3,15 +3,17 @@ const Discord = require("discord.js");
 const { prefix, token } = require("../config.json");
 
 const bot = new Discord.Client();
+const commandPath = `${__dirname}/commands`;
+
 bot.commands = new Discord.Collection();
 
 // Reading commands dynamically from separate files
-const commandFolders = fs.readdirSync('./commands');
+const commandFolders = fs.readdirSync(commandPath);
 
 for (const folder of commandFolders) {
-	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+	const commandFiles = fs.readdirSync(`${commandPath}/${folder}`).filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) {
-		const command = require(`./commands/${folder}/${file}`);
+		const command = require(`${commandPath}/${folder}/${file}`);
 		bot.commands.set(command.name, command);
 	}
 }
