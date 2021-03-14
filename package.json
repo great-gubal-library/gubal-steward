@@ -2,10 +2,10 @@
   "name": "gubal-steward",
   "version": "0.1.0",
   "description": "An RP resource manager for the Chaos RPC Discord server",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
