@@ -2,32 +2,50 @@
   "name": "gubal-steward",
   "version": "0.1.0",
   "description": "An RP resource manager for the Chaos RPC Discord server",
-  "main": "src/index.js",
+  "author": "Ahti Ruusuvuori",
+  "license": "ISC",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "start": "ts-node index.ts",
+    "start:debug": "nodemon",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/the405/gubal-steward"
+    "url": "git+https://github.com/great-gubal-library/gubal-steward"
   },
-  "author": "Ahti Ruusuvuori",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/the405/gubal-steward/issues"
+    "url": "https://github.com/great-gubal-library/gubal-steward/issues"
   },
-  "homepage": "https://github.com/the405/gubal-steward#readme",
+  "homepage": "https://github.com/great-gubal-library/gubal-steward#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "garlandtools-api": "^1.0.0",
-    "nodemon": "^2.0.7"
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^15.12.2",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }
